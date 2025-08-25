@@ -16,10 +16,7 @@ fi
 
 # verify that all necessary commands are present
 echo "[·] Verifying environment"
-set +e
-which jadx &> /dev/null
-set -e
-if [ $? -ne 0 ]; then
+if ! command -v jadx &> /dev/null; then
     echo "Command 'jadx' not found. Verify that it's installed and accessible by this script"
     exit 1
 fi
