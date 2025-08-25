@@ -51,7 +51,7 @@ else
     client_id="$(echo $constants | grep -oP "(?<=$(($marker_index + 2)):)\S+")"
     client_secret="$(echo $constants | grep -oP "(?<=$(($marker_index + 3)):)\S+")"
 fi
-basic_auth_creds="$(echo "$client_id:$client_secret" | base64)"
+basic_auth_creds="$(echo -n "$client_id:$client_secret" | base64)"
 
 # cleanup decompiled sources
 echo "[·] Cleaning up"
