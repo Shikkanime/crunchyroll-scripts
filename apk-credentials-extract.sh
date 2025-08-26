@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -e
 
@@ -16,11 +16,11 @@ fi
 
 # verify that all necessary commands are present
 echo "[·] Verifying environment"
-set +e
-which jadx &> /dev/null
-set -e
-if [ $? -ne 0 ]; then
+if ! command -v jadx &> /dev/null; then
     echo "Command 'jadx' not found. Verify that it's installed and accessible by this script"
+    exit 1
+elif ! echo "test" | grep -P 'test' &>/dev/null; then
+    echo "Command 'grep' doesn't support PCRE syntax ('-P' flag is missing). Verify that a compatible grep version is installed and accessible by this script"
     exit 1
 fi
 
