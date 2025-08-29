@@ -19,7 +19,7 @@ echo "[·] Verifying environment"
 if ! command -v jadx &> /dev/null; then
     echo "Command 'jadx' not found. Verify that it's installed and accessible by this script"
     exit 1
-elif ! echo "test" | grep -P 'test' &>/dev/null; then
+elif ! echo "test" | grep -P 'test' &> /dev/null; then
     echo "Command 'grep' doesn't support PCRE syntax ('-P' flag is missing). Verify that a compatible grep version is installed and accessible by this script"
     exit 1
 fi
